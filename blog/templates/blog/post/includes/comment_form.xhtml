@@ -1,0 +1,9 @@
+{% comment %} {% block title %}Add a new comment{% endblock  %} {% endcomment %}
+{% block content %}
+<h2> Add a new Comment on {{post.title}} </h2>
+<form method="post" action="{% url "blog:post_comment" post.id %}">
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit" value="Post Comment">
+</form>
+{% endblock  %}

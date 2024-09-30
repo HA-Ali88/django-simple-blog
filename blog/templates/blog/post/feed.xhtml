@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="content">
+      <h3>Latest posts</h3>
+      {% for item in posts_lts %}
+      {% with item.pub as pdate %}
+      <p>Welcome, {{ pdate.year }} {{ pdate.day }} {{ pdate.month }} {{ptitle}} !</p>
+        <h2>
+          <a href = "{% url 'blog:post_detail' year=pdate.year month=pdate.month day=pdate.day post=item.title|lower %}">{{ item.title }}</a>
+        </h2>
+        <p>{{ item.pub }}</p>
+        {{ item.desc|safe }}
+      {% endwith %}
+      {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
